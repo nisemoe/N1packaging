@@ -87,21 +87,18 @@ jobs:
         sudo chmod -R 777 /opt/kernel/tmp
         cd /opt/kernel/tmp
         sudo pigz -9 $RELEASE_NAME
-
         echo "::set-output name=status::success"
-
     - name: Check Files4
       run: |
         cd /opt/kernel/tmp
         ls
-
     - name: 编译后硬盘容量
       if: (!cancelled())
       run: df -hT
 
     - name: Create release
       id: release
-      uses: djnicholson/release-action@v2.11
+      uses: ncipollo/release-action@v1
       with:
         name: ${{ env.DATE }} 🚀 N1-Openwrt-img | 编译
         allowUpdates: true
@@ -129,4 +126,4 @@ jobs:
         keep_latest: 3
         delete_tags: true
       env:
-        github_token: ${{ secrets.RELEASES_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.SWAGGER_BOT_GITHUB_TOKEN }}

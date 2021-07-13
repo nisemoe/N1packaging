@@ -101,7 +101,7 @@ jobs:
 
     - name: Create release
       id: release
-      uses: ncipollo/release-action@v1
+      uses: djnicholson/release-action@v2.11
       with:
         name: ${{ env.DATE }} 🚀 N1-Openwrt-img | 编译
         allowUpdates: true
